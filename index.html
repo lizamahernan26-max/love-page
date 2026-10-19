@@ -1,960 +1,439 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-
 <head>
-
 <meta charset="UTF-8">
-
-<meta name="viewport"
-content="width=device-width,initial-scale=1.0,user-scalable=no">
-
-
-<title>
-梁桓伟 ❤️ 王艳茹
-</title>
-
-
+<meta name="viewport" content="width=device-width,initial-scale=1.0,viewport-fit=cover">
+<meta name="theme-color" content="#0b0710">
+<title>梁桓伟 ❤️ 王艳茹</title>
 <style>
-
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
+*{margin:0;padding:0;box-sizing:border-box;}
+html,body{width:100%;height:100%;}
+body{
+overflow:hidden;color:#f7e4e9;background:#0b0710;
+font-family:"Microsoft YaHei","PingFang SC",sans-serif;
+background-image:radial-gradient(ellipse at 50% 47%,#35142670,transparent 57%);
 }
-
-
-html,body{
-
-width:100%;
-height:100%;
-
-overflow:hidden;
-
-background:#030008;
-
-font-family:"Microsoft YaHei";
-
+body::before{
+content:"";position:fixed;inset:0;pointer-events:none;opacity:.4;
+background-image:radial-gradient(1px 1px at 24px 36px,#e7b5d3 60%,transparent 100%),
+radial-gradient(1px 1px at 110px 170px,#e7b5d3 60%,transparent 100%);
+background-size:197px 223px,283px 257px;
 }
-
-
-canvas{
-
-position:absolute;
-
-left:0;
-top:0;
-
+body::after{content:"";position:fixed;inset:14px;border:1px solid #e2a7bc16;pointer-events:none;}
+button{font:inherit;color:inherit;cursor:pointer;-webkit-tap-highlight-color:transparent;touch-action:manipulation;}
+button:focus-visible{outline:1px solid #ffd2df;outline-offset:5px;}
+.page{
+position:relative;display:flex;flex-direction:column;align-items:center;
+height:100vh;height:100svh;padding:32px 44px 24px;gap:16px;
+padding-top:max(26px,env(safe-area-inset-top));
+padding-bottom:max(22px,env(safe-area-inset-bottom));
 }
-
-
-#info{
-
-position:absolute;
-
-bottom:35px;
-
-width:100%;
-
-text-align:center;
-
-color:#ffd7ea;
-
-z-index:5;
-
+.topbar{width:100%;display:flex;align-items:center;justify-content:space-between;gap:12px;}
+.brand{display:flex;align-items:center;gap:11px;}
+.monogram{font:italic 23px Georgia,serif;color:#efb6c9;letter-spacing:2px;}
+.brand small{padding-left:12px;border-left:1px solid #e1a3ba30;font-size:10px;letter-spacing:3px;color:#a88d9e;}
+.music-button{
+display:flex;align-items:center;gap:12px;min-height:46px;max-width:60%;padding:9px 16px;
+border:1px solid #edb2ca30;border-radius:30px;background:#ffffff04;
 }
-
-
-.name{
-
-font-size:30px;
-
-text-shadow:
-0 0 20px #ff4f9a;
-
+.music-icon{width:18px;color:#f2a8c4;font-size:14px;}
+.music-copy{min-width:0;text-align:left;line-height:1.5;}
+.music-title{display:block;font-size:12px;letter-spacing:2px;}
+.music-state{display:block;font-size:10px;letter-spacing:1px;color:#a88d9e;}
+.music-button.is-playing{border-color:#edb2ca70;background:#f795be0b;}
+.heading{text-align:center;flex:none;margin-top:12px;}
+.eyebrow{font:10px Georgia,serif;letter-spacing:4px;color:#b791a5;}
+h1{margin-top:14px;font:normal clamp(25px,3vw,38px)/1.6 "Songti SC","SimSun",serif;letter-spacing:.18em;}
+h1 span{color:#f3b3cb;}
+.scene{position:relative;flex:1;min-height:0;width:100%;max-width:1000px;overflow:hidden;isolation:isolate;}
+canvas{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;}
+.heart-button{
+position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
+width:min(78%,430px);height:90%;border:0;border-radius:50%;background:transparent;
 }
-
-
-.time{
-
-margin-top:12px;
-
+.heart-button:focus-visible{outline-style:dashed;outline-color:#efb6c970;}
+.heart-hint{
+position:absolute;left:0;right:0;bottom:0;text-align:center;
+font-size:11px;letter-spacing:3px;color:#b98b9f;pointer-events:none;
 }
-
-
+.heart-hint span{color:#e7a1bc;margin-right:7px;}
 .word{
-
-position:absolute;
-
-color:
-rgba(255,220,240,.65);
-
-z-index:3;
-
-white-space:nowrap;
-
+position:absolute;z-index:1;max-width:var(--word-lane-width);white-space:normal;
+color:#e3b5cd;font-size:12px;line-height:1.8;letter-spacing:1px;pointer-events:none;opacity:0;
+animation:float-word var(--word-duration) linear forwards;
 }
-
-
+.scene.narrow .word{
+writing-mode:vertical-rl;text-orientation:upright;white-space:nowrap;
+font-size:11px;line-height:1.5;letter-spacing:2px;
+}
+@keyframes float-word{
+0%{transform:translateY(0);opacity:0;}
+16%,70%{opacity:.62;}
+100%{transform:translateY(var(--word-travel));opacity:0;}
+}
+.info{flex:none;text-align:center;width:100%;}
+.reply{min-height:23px;padding:0 8px;margin-bottom:19px;font:14px/1.6 "Songti SC","SimSun",serif;letter-spacing:2px;color:#d8a3b8;}
+.name{font:normal clamp(20px,3vw,26px)/1.5 "Songti SC","SimSun",serif;letter-spacing:4px;}
+.name span{display:inline-block;margin:0 10px;color:#f1a9c3;font-size:22px;}
+.since{margin-top:9px;font-size:10px;letter-spacing:2px;color:#a88d9e;}
+.since time{margin-left:6px;font-family:Georgia,serif;letter-spacing:1px;}
+.time{display:flex;align-items:baseline;justify-content:center;gap:13px;margin:18px 0 0;}
+.time .cell{display:flex;align-items:baseline;gap:6px;}
+.time strong{font:normal 27px Georgia,serif;font-variant-numeric:tabular-nums;color:#f4d1de;min-width:32px;}
+.time .cell:first-child strong{min-width:48px;}
+.time small{font-size:9px;letter-spacing:1px;color:#967c8e;}
+.separator{width:1px;height:14px;background:#dc9ab32b;}
+.footer{flex:none;margin-top:6px;font:9px Georgia,serif;letter-spacing:3px;color:#86697d;}
+.footer::before,.footer::after{content:"";display:inline-block;vertical-align:middle;width:24px;height:1px;margin:0 12px;background:#b7809a30;}
+@media(min-width:900px) and (min-height:600px){
+h1 br{display:none;}
+h1 span{margin-left:.5em;}
+}
+@media(max-width:600px){
+.page{padding-left:25px;padding-right:25px;gap:12px;}
+.brand small{display:none;}
+.music-button{padding:8px 13px;gap:8px;}
+.heading{margin-top:8px;}
+.eyebrow{font-size:9px;letter-spacing:3px;}
+h1{margin-top:11px;}
+.reply{font-size:12px;letter-spacing:1px;margin-bottom:15px;}
+.name{letter-spacing:2px;}
+.since{font-size:9px;letter-spacing:1px;}
+.time{gap:10px;margin-top:16px;}
+.time strong{font-size:25px;}
+.footer{font-size:8px;letter-spacing:2px;}
+}
+@media(max-height:650px){
+.page{padding-top:20px;padding-bottom:18px;gap:8px;}
+.heading{margin-top:0;}
+h1{font-size:23px;line-height:1.35;margin-top:8px;}
+.reply{margin-bottom:8px;font-size:11px;}
+.time{margin-top:10px;}
+.heart-hint{font-size:10px;letter-spacing:1px;}
+.footer{margin-top:0;}
+}
+@media(orientation:landscape) and (max-height:500px){
+.heading{position:absolute;left:9%;top:29%;width:36%;pointer-events:none;}
+.scene{position:absolute;right:6%;top:17%;width:43%;height:64%;}
+.info{width:48%;margin-top:auto;margin-right:auto;}
+.reply{font-size:11px;margin-bottom:5px;}
+.name{font-size:19px;}
+.since{margin-top:4px;}
+.time{margin-top:7px;gap:8px;}
+.time strong{font-size:22px;}
+.footer{margin-top:8px;}
+}
+@media(prefers-reduced-motion:reduce){.word{display:none;}}
 </style>
-
 </head>
-
-
-
 <body>
-
-
-<canvas id="canvas"></canvas>
-
-
-
-<div id="info">
-
-
-<div class="name">
-
-梁桓伟 ❤️ 王艳茹
-
+<div class="page">
+<header class="topbar">
+<div class="brand"><span class="monogram">L ♡ W</span><small>OUR LITTLE UNIVERSE</small></div>
+<button id="musicButton" class="music-button" type="button" aria-label="播放《偏爱》" aria-pressed="false">
+<span id="musicIcon" class="music-icon" aria-hidden="true">▶</span>
+<span class="music-copy"><span class="music-title">《偏爱》</span><span id="musicState" class="music-state" role="status">点击播放</span></span>
+</button>
+</header>
+<div class="heading"><p class="eyebrow">TO MY ONE AND ONLY</p><h1>所有的心动<br><span>都有你的名字。</span></h1></div>
+<main id="scene" class="scene" aria-label="星光汇聚成的立体爱心">
+<canvas id="canvas" aria-hidden="true"></canvas>
+<button id="heartButton" class="heart-button" type="button" aria-label="轻触爱心，送出一次心动" aria-describedby="reply"></button>
+<p class="heart-hint"><span aria-hidden="true">♡</span>轻触爱心 · 让心动再近一点</p>
+</main>
+<section class="info" aria-label="我们的故事">
+<p id="reply" class="reply" role="status">把漫天星光，聚成一颗为你跳动的心。</p>
+<h2 class="name">梁桓伟<span aria-hidden="true">♡</span>王艳茹</h2>
+<p class="since">我们的故事开始于<time datetime="2024-05-25T00:20:00+08:00">2024.05.25 · 00:20</time></p>
+<div id="time" class="time" role="timer" aria-live="off">
+<span class="cell"><strong id="days">0</strong><small>天</small></span><span class="separator" aria-hidden="true"></span>
+<span class="cell"><strong id="hours">00</strong><small>时</small></span><span class="separator" aria-hidden="true"></span>
+<span class="cell"><strong id="minutes">00</strong><small>分</small></span><span class="separator" aria-hidden="true"></span>
+<span class="cell"><strong id="seconds">00</strong><small>秒</small></span>
 </div>
-
-
-<div>
-
-我们的故事开始于
-2024.05.25 00:20
-
+</section>
+<footer class="footer">EVERY BEAT, FOR YOU</footer>
 </div>
-
-
-<div id="time" class="time">
-
-</div>
-
-
-</div>
-
-
-
-<audio id="music"
-src="pianai.mp3"
-loop>
-</audio>
-
-
-
+<audio id="music" src="pianai.mp3" loop preload="metadata"></audio>
 <script>
-
-
-const canvas=
-document.getElementById("canvas");
-
-
-const ctx=
-canvas.getContext("2d");
-
-
-
-let W,H;
-
+const canvas=document.getElementById("canvas");
+const ctx=canvas.getContext("2d");
+const scene=document.getElementById("scene");
+const reducedMotion=window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+let W,H,unit,halo,laneWidth,wordBag=[];
 
 function resize(){
-
-W=
-canvas.width=
-innerWidth;
-
-
-H=
-canvas.height=
-innerHeight;
-
+W=scene.clientWidth;
+H=scene.clientHeight;
+const dpr=Math.min(window.devicePixelRatio||1,2);
+canvas.width=Math.round(W*dpr);
+canvas.height=Math.round(H*dpr);
+ctx.setTransform(dpr,0,0,dpr,0,0);
+unit=Math.min(W*(W<600?.58:.76),H*.92,440)/32;
+laneWidth=Math.max(18,W/2-unit*21.5-12);
+scene.classList.toggle("narrow",laneWidth<160);
+scene.style.setProperty("--word-lane-width",laneWidth+"px");
+scene.querySelectorAll(".word").forEach(word=>word.remove());
+wordBag=[];
+halo=ctx.createRadialGradient(W/2,H*.46,0,W/2,H*.46,unit*22);
+halo.addColorStop(0,"#ed45801c");halo.addColorStop(1,"#ed458000");
 }
-
-
 resize();
+window.addEventListener("resize",()=>{resize();if(reducedMotion)requestAnimationFrame(animate);});
 
-window.onresize=resize;
-
-
-
-//====================
-// 性能自适应
-//====================
-
-
-let COUNT=7000;
-
-
-if(
-/Android|iPhone|iPad/i
-.test(navigator.userAgent)
-){
-
-COUNT=4500;
-
-}
-
-
-
-//====================
-// 3D实体粒子心脏
-//====================
-
-
-let particles=[];
-
-
-
+// 保留原有心形曲线，增加中心厚度和散开位置，用透视投影呈现立体感。
 function heart(t){
-
-
-return{
-
-
-x:
-16*Math.pow(Math.sin(t),3),
-
-
-y:
-13*Math.cos(t)
--5*Math.cos(2*t)
--2*Math.cos(3*t)
--Math.cos(4*t)
-
-
-};
-
-
+return{x:16*Math.pow(Math.sin(t),3),y:13*Math.cos(t)-5*Math.cos(2*t)-2*Math.cos(3*t)-Math.cos(4*t)};
 }
-
-
-
-for(
-let i=0;
-i<COUNT;
-i++
-){
-
-
-let t=
-Math.random()
-*Math.PI*2;
-
-
-
-let fill=
-Math.pow(
-Math.random(),
-0.45
-);
-
-
-
-let p=
-heart(t);
-
-
-
+const COUNT=reducedMotion?1200:(innerWidth<600?3200:5600);
+const particles=[];
+for(let i=0;i<COUNT;i++){
+const p=heart(Math.random()*Math.PI*2);
+const r=i<COUNT*.24?.90+Math.random()*.10:Math.sqrt(Math.random());
+const depth=(Math.random()*2-1)*5.5*Math.sqrt(1-r*r);
 particles.push({
-
-
-x:
-p.x*fill*6,
-
-
-y:
--p.y*fill*6,
-
-
-z:
-(Math.random()-0.5)
-*
-80
-*
-fill,
-
-
-size:
-Math.random()*2+0.5,
-
-
-phase:
-Math.random()*6.28
-
-
+x:p.x*r,y:(-p.y-2.5)*r,z:depth,
+sx:(Math.random()-.5)*90,sy:(Math.random()-.5)*65,sz:(Math.random()-.5)*45,
+delay:Math.random()*.65,size:.45+Math.random()*1.25,phase:Math.random()*Math.PI*2,
+color:depth>0?"#ff8fb9":(r>.88?"#ffc5db":"#ed4d8e")
 });
-
-
 }
+const stars=Array.from({length:100},()=>({x:Math.random(),y:Math.random(),r:Math.random()*1.1+.2,phase:Math.random()*6.28}));
+const bursts=[];
+let startedAt,lastTap=-Infinity;
 
-
-
-//深度排序一次
-
-particles.sort(
-(a,b)=>a.z-b.z
-);
-
-
-
-let stars=[];
-
-
-for(
-let i=0;
-i<300;
-i++
-){
-
-
-stars.push({
-
-x:Math.random(),
-
-y:Math.random(),
-
-r:Math.random()*1.5
-
-
-});
-
-
+function animate(now){
+if(startedAt===undefined)startedAt=now;
+const t=(now-startedAt)/1000;
+const tapAge=(now-lastTap)/1000;
+ctx.clearRect(0,0,W,H);
+for(const s of stars){
+ctx.globalAlpha=reducedMotion?.3:.18+(Math.sin(t*.7+s.phase)+1)*.18;
+ctx.fillStyle="#efd9ea";
+ctx.fillRect(s.x*W,s.y*H,s.r,s.r);
 }
+ctx.globalAlpha=1;
+ctx.fillStyle=halo;ctx.fillRect(0,0,W,H);
 
-
-
-let rotate=0;
-
-let beat=0;
-//====================
-// 3D投影
-//====================
-
-
-function project(p){
-
-
-let cos=
-Math.cos(rotate);
-
-
-let sin=
-Math.sin(rotate);
-
-
-
-let x=
-p.x*cos-
-p.z*sin;
-
-
-
-let z=
-p.x*sin+
-p.z*cos;
-
-
-
-let scale=
-300/
-(300+z);
-
-
-
-return{
-
-
-x:
-W/2+
-x*scale,
-
-
-y:
-H/2-20+
-p.y*scale,
-
-
-scale:scale
-
-
-};
-
-
+const angle=reducedMotion?-.12:Math.sin(t*.34)*.30;
+const cos=Math.cos(angle),sin=Math.sin(angle);
+const cycle=t%1.25;
+const beat=reducedMotion?0:.065*Math.exp(-Math.pow((cycle-.16)/.075,2))+.035*Math.exp(-Math.pow((cycle-.36)/.085,2));
+const pulse=1+beat+(tapAge<1.5?Math.exp(-tapAge*4)*.15:0);
+ctx.globalCompositeOperation="lighter";
+for(const p of particles){
+const progress=reducedMotion?1:Math.max(0,Math.min(1,(t-p.delay)/2.2));
+const ease=1-Math.pow(1-progress,3);
+const px=(p.sx+(p.x-p.sx)*ease)*pulse;
+const py=(p.sy+(p.y-p.sy)*ease)*pulse;
+const pz=(p.sz+(p.z-p.sz)*ease)*pulse;
+const x=px*cos-pz*sin,z=px*sin+pz*cos;
+const perspective=65/(65+z);
+const size=p.size*perspective*Math.max(.65,unit/10);
+ctx.globalAlpha=(.38+(p.z+5.5)/22)*(reducedMotion?1:.80+.20*Math.sin(t*1.6+p.phase));
+ctx.fillStyle=p.color;
+ctx.fillRect(W/2+x*unit*perspective,H*.46+py*unit*perspective,size,size);
 }
-
-
-
-
-
-
-
-//====================
-// 星空绘制
-//====================
-
-
-function drawStars(){
-
-
-for(let s of stars){
-
-
-ctx.fillStyle=
-"rgba(255,255,255,.55)";
-
-
-ctx.beginPath();
-
-
-ctx.arc(
-
-s.x*W,
-
-s.y*H,
-
-s.r,
-
-0,
-
-Math.PI*2
-
-);
-
-
-ctx.fill();
-
-
+for(let i=bursts.length-1;i>=0;i--){
+const p=bursts[i],age=(now-p.born)/1000;
+if(age>=1.4){bursts.splice(i,1);continue;}
+ctx.globalAlpha=Math.pow(1-age/1.4,2);
+ctx.fillStyle=p.color;
+const x=W/2+Math.cos(p.angle)*p.speed*age;
+const y=H*.46+Math.sin(p.angle)*p.speed*age+22*age*age;
+ctx.fillRect(x,y,p.size,p.size);
 }
-
-
+ctx.globalCompositeOperation="source-over";
+if(!reducedMotion&&tapAge<1.2){
+ctx.globalAlpha=(1-tapAge/1.2)*.45;
+ctx.strokeStyle="#ffb5d3";ctx.lineWidth=1;
+ctx.beginPath();ctx.ellipse(W/2,H*.46,unit*13+tapAge*70,unit*12+tapAge*60,0,0,Math.PI*2);ctx.stroke();
 }
-
-
-
-
-
-
-
-//====================
-// 心脏粒子绘制
-//====================
-
-
-
-function drawHeart(){
-
-
-
-beat+=0.08;
-
-
-
-//心跳
-
-let pulse=
-
-1+
-Math.sin(beat)
-*
-0.035;
-
-
-
-
-
-for(
-let i=0;
-i<particles.length;
-i++
-){
-
-
-
-let p=
-particles[i];
-
-
-
-let point=
-project({
-
-
-x:
-p.x*pulse,
-
-
-y:
-p.y*pulse,
-
-
-z:
-p.z*pulse
-
-
-});
-
-
-
-
-
-let ratio=
-i/COUNT;
-
-
-
-//颜色渐变
-
-let r=255;
-
-
-let g;
-
-
-let b;
-
-
-
-if(ratio<0.35){
-
-
-//核心红色
-
-g=
-40+
-ratio*120;
-
-
-b=
-80+
-ratio*100;
-
-
-
-}else{
-
-
-//外围粉紫
-
-g=
-90+
-ratio*100;
-
-
-b=
-160+
-ratio*90;
-
-
+ctx.globalAlpha=1;
+if(!reducedMotion)requestAnimationFrame(animate);
 }
-
-
-
-
-
-//粒子呼吸闪烁
-
-
-let alpha=
-
-0.75+
-Math.sin(
-beat+p.phase
-)
-*
-0.2;
-
-
-
-
-ctx.fillStyle=
-
-`rgba(
-${r},
-${g},
-${b},
-${alpha}
-)`;
-
-
-
-
-// 使用矩形代替arc
-// 手机性能更好
-
-
-let size=
-p.size*
-point.scale;
-
-
-
-ctx.fillRect(
-
-point.x,
-
-point.y,
-
-size,
-
-size
-
-);
-
-
-
-}
-
-
-
-}
-
-
-
-
-
-
-
-
-//====================
-// 主动画
-//====================
-
-
-function animate(){
-
-
-
-ctx.clearRect(
-
-0,
-
-0,
-
-W,
-
-H
-
-);
-
-
-
-
-drawStars();
-
-
-
-rotate+=0.004;
-
-
-
-drawHeart();
-
-
-
-requestAnimationFrame(
-animate
-);
-
-
-
-}
-
-
-
-animate();
-//====================
-// 情话漂浮
-//====================
-
+requestAnimationFrame(animate);
 
 const loveWords=[
-
-
 "遇见你，是我这一生最幸运的事情",
-
-
 "你是我的偏爱，也是我的例外",
-
-
 "未来很长，希望每一步都有你",
-
-
 "想陪你走过每一个春夏秋冬",
-
-
 "你的笑容，是我最喜欢的风景",
-
-
 "2024年5月25日，我们的故事开始",
-
-
 "谢谢你出现在我的生命里",
-
-
 "平凡的日子，因为你变得特别",
-
-
 "想把所有浪漫都留给你",
-
-
 "时间会走，但喜欢不会改变",
-
-
 "希望多年以后，我们依然牵着手",
-
-
 "有你的地方，就是我想去的远方",
-
-
 "你让普通的每一天都有意义",
-
-
 "愿我们一起看遍世界风景",
-
-
-"梁桓伟 ❤️ 王艳茹"
-
-
+"梁桓伟 ❤️ 王艳茹",
+"今晚的月亮，想和你一起看",
+"人间很吵，抱你刚好",
+"想见你，也想抱紧你",
+"想念偷偷绕到你身边",
+"晚风替我说了想你",
+"我偏偏，就想偏爱你",
+"你一靠近，心就不讲道理",
+"今天的喜欢，比昨天多一点",
+"我的例外，一直都是你",
+"想和你，把日子过成诗",
+"想把晚安，说在你耳边",
+"你一笑，我就没了原则",
+"想借你的手，牵一辈子",
+"所有小心思，都与你有关",
+"我的心事，你就是答案",
+"风很温柔，我也是",
+"偏爱你这件事，从不犹豫",
+"你在身边，世界就很甜",
+"你眨眨眼，我就心软",
+"想把喜欢，讲给你听",
+"只要是你，晚一点也没关系",
+"你是我想分享的每个日常",
+"想把今天的拥抱留给你",
+"有点想你，不止一点",
+"想把温柔都藏进拥抱里",
+"人群再拥挤，我也先看你",
+"有你的夜晚，连风都偏心",
+"想在你的未来里，赖着不走",
+"想和你，一起浪费好天气",
+"想念你的时候，月亮都很近",
+"你一出现，我就偷偷开心",
+"最好的位置，永远留给你",
+"你负责可爱，我负责心动",
+"靠近你，是心里的本能",
+"想替你，把所有委屈抱走",
+"别人是别人，你是我的你",
+"喜欢没有捷径，只有向你走",
+"想把你的名字，写进往后",
+"今天也想，被你偏爱",
+"你是我不想收敛的温柔",
+"想和你，看四季慢慢变换",
+"想把每个清晨都过成我们",
+"见不到的时候，就多想一点",
+"我的浪漫，只对你例外",
+"月色再美，也想分你一半",
+"想把所有晚安都说给你",
+"我不贪心，只想一直有你",
+"你走向我时，风都温柔了",
+"今天也有偷偷想你",
+"我想你的事，星星都知道",
+"你是藏不住的心动",
+"想陪你，把岁月慢慢走",
+"想被你喜欢，也被你惦记",
+"喜欢你，是每天的习惯",
+"我所有的偏心，都给你",
+"你站在那里，就是我的风景",
+"一见到你，就想靠近一点",
+"等下次见面，先抱久一点",
+"晚风有信，信里是你",
+"想把平淡，都酿成我们的甜",
+"我的目光，总会先找到你",
+"你一喊我，心就软了",
+"想念很轻，喜欢很重",
+"想和你，把以后过很久",
+"再普通的一天，也想见你",
+"你的名字，自带温柔",
+"与你有关，我都偏心",
+"今天的温柔，依然为你",
+"我想你，不分天气",
+"只想和你，慢慢到老",
+"想念的方向，是你",
+"我会记得，你所有的好",
+"你的靠近，是我的心愿",
+"心动这件事，你最擅长",
+"你是我愿意等待的下次",
+"很高兴，今天也有你",
+"喜欢在你面前，藏不住",
+"想再靠近你，一点点",
+"你不用多好，我喜欢就好",
+"一起走吧，走很远很远"
 ];
-
-
-
-
-
+let lastWord="",wordSide=0;
+function nextLoveWord(){
+if(!wordBag.length){
+wordBag=loveWords.filter(word=>laneWidth>=160||word.length<=12);
+for(let i=wordBag.length-1;i>0;i--){
+const j=Math.floor(Math.random()*(i+1));
+[wordBag[i],wordBag[j]]=[wordBag[j],wordBag[i]];
+}
+if(wordBag[wordBag.length-1]===lastWord)[wordBag[0],wordBag[wordBag.length-1]]=[wordBag[wordBag.length-1],wordBag[0]];
+}
+lastWord=wordBag.pop();
+return lastWord;
+}
 function createLoveWord(){
-
-
-
-let div=
-document.createElement("div");
-
-
-
+if(document.hidden||reducedMotion)return;
+const side=wordSide++%2?"right":"left";
+if(scene.querySelector('.word[data-side="'+side+'"]'))return;
+const div=document.createElement("div");
 div.className="word";
-
-
-
-div.innerText=
-
-loveWords[
-Math.floor(
-Math.random()*loveWords.length
-)
-];
-
-
-
-div.style.left=
-
-(10+
-Math.random()*75)
-+
-"%";
-
-
-
-div.style.bottom="-30px";
-
-
-
-document.body.appendChild(div);
-
-
-
-
-setTimeout(()=>{
-
-
-div.style.transition=
-"12s linear";
-
-
-div.style.transform=
-"translateY(-110vh)";
-
-
-div.style.opacity=0;
-
-
-
-},100);
-
-
-
-setTimeout(()=>{
-
-
-div.remove();
-
-
-
-},12000);
-
-
-
+div.dataset.side=side;
+div.setAttribute("aria-hidden","true");
+div.textContent=nextLoveWord();
+div.style.setProperty("--word-duration",(13+Math.random()*2)+"s");
+scene.appendChild(div);
+const x=side==="left"?8:W-laneWidth-8;
+div.style.left=(x+Math.random()*Math.max(0,laneWidth-div.offsetWidth))+"px";
+const top=Math.max(12,Math.min(H*(.62+Math.random()*.18),H-div.offsetHeight-18));
+div.style.top=top+"px";
+div.style.setProperty("--word-travel",-Math.min(88+Math.random()*44,top-12)+"px");
+div.addEventListener("animationend",()=>div.remove(),{once:true});
 }
+setTimeout(()=>{createLoveWord();setInterval(createLoveWord,8000);},3200);
 
-
-
-//正常速度
-
-setInterval(
-
-createLoveWord,
-
-3000
-
-);
-
-
-
-
-
-
-
-
-
-//====================
-// 相爱时间
-//====================
-
-
-const startTime=
-
-new Date(
-"2024-05-25T00:20:00"
-);
-
-
-
-
-
+// 日期固定为北京时间，换时区查看也从同一个时刻开始计时。
+const startTime=new Date("2024-05-25T00:20:00+08:00");
 function updateTime(){
-
-
-
-let total=
-
-Math.floor(
-
-(Date.now()-startTime)
-/1000
-
-);
-
-
-
-
-let day=
-
-Math.floor(
-total/86400
-);
-
-
-
-let hour=
-
-Math.floor(
-total%86400/3600
-);
-
-
-
-let minute=
-
-Math.floor(
-total%3600/60
-);
-
-
-
-let second=
-
-total%60;
-
-
-
-
-
-document
-.getElementById("time")
-.innerHTML=
-
-
-"相爱已 "
-+
-day
-+
-" 天 "
-+
-hour
-+
-" 小时 "
-+
-minute
-+
-" 分 "
-+
-second
-+
-" 秒";
-
-
-
+const total=Math.floor((Date.now()-startTime)/1000);
+document.getElementById("days").textContent=Math.floor(total/86400);
+document.getElementById("hours").textContent=String(Math.floor(total%86400/3600)).padStart(2,"0");
+document.getElementById("minutes").textContent=String(Math.floor(total%3600/60)).padStart(2,"0");
+document.getElementById("seconds").textContent=String(total%60).padStart(2,"0");
 }
-
-
-
-setInterval(
-
-updateTime,
-
-1000
-
-);
-
-
-
 updateTime();
+setInterval(updateTime,1000);
 
-
-
-
-
-
-
-
-//====================
-// 微信点击播放音乐
-//====================
-
-
-document.addEventListener(
-
-"click",
-
-function(){
-
-
-document
-.getElementById("music")
-.play()
-.catch(()=>{});
-
-
-
+const music=document.getElementById("music");
+const musicButton=document.getElementById("musicButton");
+const musicState=document.getElementById("musicState");
+let musicRequested=false;
+function updateMusicButton(playing,text){
+musicButton.classList.toggle("is-playing",playing);
+musicButton.setAttribute("aria-pressed",String(playing));
+musicButton.setAttribute("aria-label",playing?"暂停《偏爱》":"播放《偏爱》");
+document.getElementById("musicIcon").textContent=playing?"Ⅱ":"▶";
+musicState.textContent=text;
 }
+function playMusic(){
+if(music.error)music.load();
+music.play().catch(error=>{
+if(error.name!=="AbortError")updateMusicButton(false,"暂时无法播放，点击重试");
+});
+}
+music.addEventListener("play",()=>updateMusicButton(true,"正在缓冲"));
+music.addEventListener("playing",()=>updateMusicButton(true,"播放中 · 点击暂停"));
+music.addEventListener("pause",()=>updateMusicButton(false,"已暂停 · 点击播放"));
+music.addEventListener("waiting",()=>updateMusicButton(!music.paused,"正在缓冲"));
+music.addEventListener("error",()=>updateMusicButton(false,"音乐未能加载，点击重试"));
+musicButton.addEventListener("click",()=>{
+musicRequested=true;
+if(music.paused)playMusic();else music.pause();
+});
 
-);
-
-
-
-
+let wordIndex=0;
+document.getElementById("heartButton").addEventListener("click",()=>{
+lastTap=performance.now();
+document.getElementById("reply").textContent=loveWords[wordIndex++%loveWords.length];
+if(!reducedMotion){
+for(let i=0;i<55;i++)bursts.push({born:lastTap,angle:Math.random()*Math.PI*2,speed:35+Math.random()*120,size:1+Math.random()*2,color:i%3?"#ffc5dc":"#ff6aa5"});
+if(bursts.length>220)bursts.splice(0,bursts.length-220);
+}
+// 首次轻触时播放；手动暂停后，触摸爱心不会重新打开音乐。
+if(!musicRequested){musicRequested=true;playMusic();}
+});
 </script>
-
-
 </body>
-
-
 </html>
