@@ -1,0 +1,32 @@
+[hidden]{display:none!important;}
+.account-panel{width:min(590px,calc(100% - 32px));}
+.account-panel h3{font-size:16px;font-weight:normal;line-height:1.7;margin:0;}
+.account-panel .settings-form{margin-top:16px;gap:16px;}
+.account-switch{min-height:44px;margin:16px 0;padding:7px 0;border:0;border-bottom:1px solid #edb2ca50;background:transparent;color:#e8bed1;font-size:13px;cursor:pointer;}
+.account-section{margin:20px 0;padding:18px 0;border-block:1px solid var(--line);}
+.account-section>h3{margin-bottom:10px;}
+.account-section>button{margin:14px 0;}
+.account-section summary{min-height:44px;display:list-item;cursor:pointer;font-size:14px;line-height:44px;}
+.online-pair-state{font-size:14px;line-height:1.8;color:#e8bed1;}
+.account-panel input{width:100%;min-width:0;min-height:46px;border:1px solid var(--line);border-radius:10px;padding:10px 12px;background:#ffffff05;font-size:16px;}
+.account-panel label{display:grid;gap:8px;font-size:13px;line-height:1.7;}
+.account-panel>div>p.field-note{margin-top:14px;}
+.account-panel button:disabled{opacity:.5;cursor:wait;}
+.form-status.is-error{color:#ffc2cb;}
+.online-login-gate{margin-top:22px;padding:22px 16px;border:1px dashed #edb2ca50;border-radius:14px;text-align:center;}
+.online-login-gate button{margin-top:14px;}
+.online-session-hint{font-size:12px;color:#dbb0c5;margin-top:14px!important;}
+.online-sync{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:8px;}
+.online-sync>span{font-size:11px;color:#bba3b4;overflow-wrap:anywhere;}
+.online-sync>button{font-size:12px;white-space:nowrap;flex:none;}
+.online-import-preview{margin-top:16px;}
+@media(max-width:600px){.account-panel{width:calc(100% - 20px);}.account-section{padding-block:12px;}.page-actions #onlineEntry{font-size:11px;}}
+@media(min-width:360px) and (max-width:600px){
+  .has-online-space .page-actions{gap:8px;}
+  .has-online-space .page-actions .soft-button{padding-inline:12px;font-size:11px;letter-spacing:.5px;}
+  .has-online-space .page-actions .local-tag{padding-left:3px;}
+}
+.settings-form button:disabled{opacity:.5;cursor:wait;}
+
+#onlineQuickLink, #onlineRecoveryCode { display:block; width:100%; box-sizing:border-box; margin:10px 0; padding:10px; border:1px solid #ffffff28; border-radius:10px; background:#0c0a1c; color:#f6d9e8; font:14px monospace; }
+#onlineQuickInvite { margin-top:10px; }

@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 320" fill="none">
+  <defs>
+    <linearGradient id="petal" x1="90" y1="40" x2="160" y2="195" gradientUnits="userSpaceOnUse"><stop stop-color="#fff5f4" stop-opacity=".68"/><stop offset=".65" stop-color="#f8c2d6" stop-opacity=".24"/><stop offset="1" stop-color="#b96a98" stop-opacity=".07"/></linearGradient>
+    <linearGradient id="stem" x1="110" y1="160" x2="100" y2="320" gradientUnits="userSpaceOnUse"><stop stop-color="#e5bdc9" stop-opacity=".7"/><stop offset="1" stop-color="#7f91a0" stop-opacity=".2"/></linearGradient>
+  </defs>
+  <g stroke="url(#stem)" stroke-width="1.3" stroke-linecap="round">
+    <path d="M116 166C105 215 144 248 100 316"/>
+    <path d="M122 241C76 233 58 212 47 193C80 197 110 215 122 241Z" fill="#b7bbbe" fill-opacity=".06"/>
+    <path d="M120 273C155 263 180 237 188 218C153 227 132 247 120 273Z" fill="#b7bbbe" fill-opacity=".06"/>
+    <path d="M123 242L56 200M122 271L180 225" stroke-opacity=".5"/>
+  </g>
+  <g fill="url(#petal)" stroke="#f4c9d8" stroke-opacity=".8" stroke-width="1.1" stroke-linejoin="round">
+    <path d="M117 169C89 127 74 76 104 22C109 53 143 67 143 100C142 128 128 151 117 169Z"/>
+    <path d="M118 168C125 112 164 68 213 65C192 86 198 116 174 139C157 154 137 162 118 168Z"/>
+    <path d="M115 168C70 147 36 110 23 64C50 85 78 76 101 104C115 123 119 148 115 168Z"/>
+    <path d="M117 166C133 129 161 110 202 126C176 133 178 161 154 176C137 187 123 177 117 166Z"/>
+    <path d="M116 167C87 142 57 144 27 176C52 173 56 195 84 196C104 195 114 182 116 167Z"/>
+    <path d="M116 165C113 185 105 218 133 236C126 212 152 203 144 185C138 175 125 168 116 165Z"/>
+  </g>
+  <g stroke="#ffe4ec" stroke-opacity=".4" stroke-width=".8">
+    <path d="M117 166C111 122 98 80 104 38M119 166C149 122 168 93 201 72M111 162C77 123 58 106 33 80M119 166L187 134M112 170L40 179M119 174L134 223"/>
+  </g>
+  <g stroke="#f5d5ad" stroke-width="1" stroke-linecap="round">
+    <path d="M116 167L110 119M118 167L133 121M118 166L148 134M115 165L96 133"/>
+    <path d="M107 116L113 114M131 118L137 118M146 130L152 132M92 130L98 128" stroke-width="3.3"/>
+  </g>
+  <g fill="#f3bfd5" fill-opacity=".4"><circle cx="76" cy="57" r="1.2"/><circle cx="189" cy="190" r="1.5"/><circle cx="46" cy="239" r="1"/><circle cx="201" cy="103" r=".8"/></g>
+</svg>

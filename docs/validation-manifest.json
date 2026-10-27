@@ -1,0 +1,280 @@
+{
+  "projectRoot": "C:\\Users\\24583\\Desktop\\hajiru",
+  "brand": "心网",
+  "browserVerification": {
+    "testedAt": "2026-10-27T07:32:05.817Z",
+    "browser": "156.0.8078.47",
+    "origin": "isolated temporary localhost port",
+    "checks": [
+      "原姓名、实时计时、粒子场景和漂浮情话可用",
+      "楷体数字文件已加载，0—9 等宽，启用齐线数字",
+      "首次爱心触发音乐，手动暂停后再点爱心仍暂停",
+      "本页记录、文本注入防护、编辑草稿保护、分类、刷新即清空",
+      "明确开启本机保存后可恢复，删除有确认，取消保存移除副本",
+      "原生弹窗 Escape/焦点恢复，姓名日期音量保存、倒计时和恢复",
+      "手机备份先预览后合并，取消不改记录，重复导入不重复，草稿保留且不自动开启存储",
+      "损坏/过大文件被拒绝，导出文件能重新读取且只包含已记录内容",
+      "取消编辑及刷新都有草稿保护，取消离开保留文字，保存完成后不再拦截刷新",
+      "desktop 1440×1000 无横向溢出，面板可滚动操作",
+      "laptop 1024×768 无横向溢出，面板可滚动操作",
+      "tablet 768×1024 无横向溢出，面板可滚动操作",
+      "phone 390×844 无横向溢出，面板可滚动操作",
+      "small-phone 320×568 无横向溢出，面板可滚动操作",
+      "landscape 812×375 无横向溢出，面板可滚动操作",
+      "动态切换减少动画，粒子停止连续重绘，情话停止漂浮",
+      "存储被禁用时仍可本页记录，不误报已保存",
+      "无 JavaScript 异常、无资源加载错误"
+    ],
+    "errors": [],
+    "requests": []
+  },
+  "unitTests": {
+    "passed": 58,
+    "failed": 0,
+    "skipped": 2,
+    "total": 60,
+    "command": "node --test tests/*.test.mjs",
+    "postgresVerifiedSeparately": {
+      "passed": 3,
+      "failed": 0,
+      "includesTwoNormallySkippedIntegrationTests": true,
+      "engine": "isolated native PostgreSQL 18.4 on loopback"
+    }
+  },
+  "build": {
+    "publicFiles": 19,
+    "sourceAndOutputIdentical": true,
+    "sha256": {
+      "assets/fonts/OFL.txt": "4fff27d35db0e22cd81d58da6f20e09f415cf354a3338e3cf1fc0eb9222c7174",
+      "assets/fonts/lxgw-wenkai-mono-tc-numerals.woff2": "9248597fa85ea0dcfb008820a4f129806f0ffa48f98bd95cc228ac5e1210c026",
+      "assets/lily.svg": "d519df34dbc9570ab1ef99eb46a1dc8b4b40c1488406b5217d945886bc0bc209",
+      "index.html": "e81d06b9145dda878f79b325903cadd1cfa5c3eae4336436ee11316105b7cf34",
+      "js/app.js": "b69da1d9faf7317c4b082789521a0d429a47309fe0092368c5464d4f0b6e46b3",
+      "js/config.js": "3c8c653f18acb7fbf1007473d98fc14dd885cb9fbce114f0142e8a03d33fbdf6",
+      "js/heart.js": "1726e6ab4da03d818f1f035aad6c627aeced8eea880a9ab30ecf2021e6cec164",
+      "js/love-words.js": "dbba719900980d9bb8ce78c4f26c0bc441081c9d473e589eef4064ad2cd739db",
+      "js/music.js": "b9972e41d92c42f8baefcc1a709fa0591316d1d335d44bb60952056751024b8c",
+      "js/online-api.js": "5f06c3de47eadd783befb889e8444eb7b48eeb4a7ae5930fb9e60bb1b8923d2e",
+      "js/online-space.js": "3ae9c9ad3cbe6f9993a17f4054aa15ff36de0f8a8c88a14baef23785f3ddf4ae",
+      "js/whisper-backup.js": "a91ab659a64159239b49326cff2ba2bcd943310f270d2ee259140232c723aa6b",
+      "js/whisper-store.js": "787fd9470a7fabf17e5540ddbd7152d33c3408e9a82465853698a2c3c92f8293",
+      "js/whispers.js": "969e745c3d09f0285e8deb1c4614c4047b4e60f49378a0aee954d63c597bfb72",
+      "pianai.mp3": "ac5df61db6e80d3673099a7175e5c6ea7e582a82bce27bdda55e4ec9bbf4c464",
+      "styles/app.css": "c3a8bd52c15c0b45c871196e1818bc130b3661e3c15e5a3eb787309066c9223a",
+      "styles/online.css": "7c207f95d6d29e28f4d234fe6d8eeddaa80bb6947fcba3894d63c9c7c392002b",
+      "styles/scene.css": "6ba702fb7cd055c46b99805a0f63ccffcfe8f0b5c475995d47b2ac5fe1b5a48a",
+      "styles/whispers.css": "7bbd1ffa1580adb774cf0da4ac017767e3fe0e604dfa3fa6a359143b97e2e195"
+    }
+  },
+  "startup": {
+    "script": "start.cmd",
+    "url": "http://127.0.0.1:8790/",
+    "pendingV05StartVerification": true
+  },
+  "deployment": {
+    "githubRepository": "lizamahernan26-max/love-page",
+    "githubUploadVerified": false,
+    "backendPublished": false,
+    "platforms": "Render Free + Neon Free",
+    "blockingCondition": "browser URL safety verification stopped control; accounts logged in but resources not created by agent"
+  },
+  "homepagePolish": {
+    "date": "2026-10-27",
+    "englishUnchanged": true,
+    "backup": "backup-before-home-polish-20261027-094441",
+    "changedSourceFiles": [
+      "index.html",
+      "styles/app.css",
+      "js/app.js",
+      "js/heart.js"
+    ],
+    "livePreview": "http://127.0.0.1:8787/",
+    "openedIn": "Edge"
+  },
+  "kaiNumerals": {
+    "font": "LXGW WenKai Mono TC",
+    "bytes": 2032,
+    "digits": "lining and tabular",
+    "runtimeFontOrigin": "same origin, no third-party request",
+    "clockContainers": "fixed 2ch width, same row alignment",
+    "mobileSizes": [
+      [
+        390,
+        844
+      ],
+      [
+        320,
+        568
+      ],
+      [
+        812,
+        375
+      ]
+    ],
+    "deviceVerification": "desktop browser responsive simulation",
+    "backup": "backup-before-kai-numerals-20261027-112635"
+  },
+  "lilyEmphasis": {
+    "desktopWidth": "clamp(190px,24vw,320px)",
+    "mobileWidth": "clamp(110px,31vw,130px)",
+    "desktopOpacity": 0.58,
+    "mobileOpacity": 0.52,
+    "backup": "backup-before-lily-emphasis-20261027-121951",
+    "changedSourceFiles": [
+      "styles/app.css",
+      "assets/lily.svg"
+    ]
+  },
+  "testedAt": "2026-10-27T07:37:22.366Z",
+  "version": "0.5.0",
+  "backupAndDraftProtection": {
+    "backup": "backup-before-v03-20261027-131219",
+    "files": [
+      "js/whisper-store.js",
+      "js/whisper-backup.js",
+      "js/whispers.js",
+      "styles/whispers.css"
+    ],
+    "maxBackupBytes": 2097152,
+    "merging": "additive, skip exact duplicates, preserve conflicting versions",
+    "encryption": false,
+    "networkTransmission": false,
+    "mobile": "desktop Edge viewport and Chrome responsive simulation; real phone not tested",
+    "preview": {
+      "desktop": "http://127.0.0.1:8787/",
+      "phone": "http://192.168.137.81:8788/"
+    }
+  },
+  "pairBrowserVerification": {
+    "testedAt": "2026-10-27T07:23:56.308Z",
+    "browser": "156.0.8078.47",
+    "checks": [
+      "独立电脑/手机会话完成首个账号、邀请码、第二账号与绑定；会话 Cookie 对脚本不可读",
+      "共享记录自动出现在另一手机；两人的私密内容互不可见，旧浏览器副本不自动读取，收件人没有修改按钮",
+      "同一作者两台设备并发编辑时拒绝旧版本覆盖，并保留输入草稿",
+      "断网保存失败保留草稿，恢复后重试只产生一条记录",
+      "备份只导出自己写的已保存记录；旧共享备份经过预览后按私密记录导入",
+      "共同姓名与纪念日通过后端同步，音乐音量保持各设备独立",
+      "电脑、笔记本、平板、普通手机、小手机与横屏下账号/心里话面板可操作，无横向溢出",
+      "同一浏览器另一标签页退出/换账号时清除旧记录与草稿，不把上一账号内容带给下一账号",
+      "首次连接失败时不降级读取未隔离的旧本地副本",
+      "无页面 JavaScript 异常、无静态资源错误及服务器 5xx"
+    ],
+    "errors": [],
+    "requests": [],
+    "scope": "isolated test database and separate browser contexts, no real user accounts"
+  },
+  "server": {
+    "sha256": {
+      "server/app.mjs": "3ef0a631619c3fbd49a7f32e1b01e3b2cb908023da71c8e0a68758bcf21d790f",
+      "server/database.mjs": "e062a439e7531ebe6c52044778a8ef495e71fb0ef3864a6f5f34d913fc827665",
+      "server/security.mjs": "e747e2f12f58f3aa8c12557c32009758a0a70cdbf2b1acae8f3a118b4e8b2ccb",
+      "server/start.mjs": "8fe56c88217d9cf019714ebdf2f38c9f92eabd995a56606221e4dd0aaeab023a"
+    },
+    "privacy": "server-side author and active-couple checks",
+    "recordEncryption": "plaintext SQLite, not end-to-end encrypted"
+  },
+  "serverPackage": {
+    "files": 37,
+    "containsRealDatabase": false,
+    "containsRealEnv": false
+  },
+  "dualVersion": {
+    "backup": "backup-before-v04-20261027-150319",
+    "onlineSync": "foreground 5-second polling plus focus/online/manual refresh",
+    "httpsProductionGuardVerified": true,
+    "phoneDevelopmentGuardVerified": true,
+    "deviceScope": "Windows desktop browsers, simulated phone/tablet sizes; no iOS/Android physical-device claim"
+  },
+  "legacyMigrationPreviews": {
+    "checkedAt": "2026-10-27T07:43:56.516Z",
+    "sameOriginalOrigins": true,
+    "browserStorageUntouched": true,
+    "checks": [
+      {
+        "url": "http://127.0.0.1:8787/api/status",
+        "status": 200,
+        "online": false
+      },
+      {
+        "url": "http://192.168.137.81:8788/api/status",
+        "status": 200,
+        "online": false
+      },
+      {
+        "url": "http://127.0.0.1:8790/api/status",
+        "status": 200,
+        "online": true
+      }
+    ]
+  },
+  "browserV05": {
+    "legacy": {
+      "testedAt": "2026-10-27T12:04:33.087Z",
+      "browser": "156.0.8078.47",
+      "origin": "isolated temporary localhost port",
+      "checks": [
+        "原姓名、实时计时、粒子场景和漂浮情话可用",
+        "楷体数字文件已加载，0—9 等宽，启用齐线数字",
+        "首次爱心触发音乐，手动暂停后再点爱心仍暂停",
+        "本页记录、文本注入防护、编辑草稿保护、分类、刷新即清空",
+        "明确开启本机保存后可恢复，删除有确认，取消保存移除副本",
+        "原生弹窗 Escape/焦点恢复，姓名日期音量保存、倒计时和恢复",
+        "手机备份先预览后合并，取消不改记录，重复导入不重复，草稿保留且不自动开启存储",
+        "损坏/过大文件被拒绝，导出文件能重新读取且只包含已记录内容",
+        "取消编辑及刷新都有草稿保护，取消离开保留文字，保存完成后不再拦截刷新",
+        "desktop 1440×1000 无横向溢出，面板可滚动操作",
+        "laptop 1024×768 无横向溢出，面板可滚动操作",
+        "tablet 768×1024 无横向溢出，面板可滚动操作",
+        "phone 390×844 无横向溢出，面板可滚动操作",
+        "small-phone 320×568 无横向溢出，面板可滚动操作",
+        "landscape 812×375 无横向溢出，面板可滚动操作",
+        "动态切换减少动画，粒子停止连续重绘，情话停止漂浮",
+        "存储被禁用时仍可本页记录，不误报已保存",
+        "无 JavaScript 异常、无资源加载错误"
+      ],
+      "errors": [],
+      "requests": []
+    },
+    "pair": {
+      "testedAt": "2026-10-27T12:04:01.209Z",
+      "browser": "156.0.8078.47",
+      "checks": [
+        "独立电脑/手机会话完成首个账号、邀请码、第二账号与绑定；会话 Cookie 对脚本不可读",
+        "共享记录自动出现在另一手机；两人的私密内容互不可见，旧浏览器副本不自动读取，收件人没有修改按钮",
+        "同一作者两台设备并发编辑时拒绝旧版本覆盖，并保留输入草稿",
+        "断网保存失败保留草稿，恢复后重试只产生一条记录",
+        "备份只导出自己写的已保存记录；旧共享备份经过预览后按私密记录导入",
+        "共同姓名与纪念日通过后端同步，音乐音量保持各设备独立",
+        "电脑、笔记本、平板、普通手机、小手机与横屏下账号/心里话面板可操作，无横向溢出",
+        "同一浏览器另一标签页退出/换账号时清除旧记录与草稿，不把上一账号内容带给下一账号",
+        "首次连接失败时不降级读取未隔离的旧本地副本",
+        "无页面 JavaScript 异常、无静态资源错误及服务器 5xx"
+      ],
+      "errors": [],
+      "requests": [],
+      "scope": "isolated test database and separate browser contexts, no real user accounts"
+    },
+    "device": {
+      "testedAt": "2026-10-27T12:02:48.165Z",
+      "checks": [
+        "手机专属入口没有注册密码表单，链接片段及时移除，进入后显示自己的恢复码",
+        "同一手机刷新后自动识别，自己的记录持久可见，对方私密内容没有传到页面",
+        "手机、窄屏、横屏面板没有横向溢出",
+        "新设备使用恢复码进入同一身份，旧设备失效且旧记录清空",
+        "免登录流程无 JavaScript 异常"
+      ],
+      "errors": []
+    }
+  },
+  "previousV04Startup": {
+    "script": "start.cmd",
+    "url": "http://127.0.0.1:8790/",
+    "httpStatus": 200,
+    "liveDatabaseCountsAtVerification": {
+      "accounts": 0,
+      "notes": 0
+    }
+  },
+  "checkedAt": "2026-10-27T12:14:02.322Z"
+}

@@ -1,0 +1,117 @@
+/* 数字子集随网页加载，避免手机缺少本地楷体时退回高低不齐的旧式数字。 */
+@font-face {
+  font-family: "LXGW WenKai Mono TC";
+  src: url("../assets/fonts/lxgw-wenkai-mono-tc-numerals.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+20, U+2E, U+30-3A, U+B7;
+}
+:root { color-scheme: dark; --ink: #f7e4e9; --muted: #b8a0b2; --line: #edb2ca30; --pink: #f3b3cb; --number-font: "LXGW WenKai Mono TC", "KaiTi", "STKaiti", monospace; }
+body { overflow-x: hidden; overflow-y: auto; }
+body::after { display: none; }
+.page::after { content: ""; position: absolute; inset: 14px; border: 1px solid #e2a7bc16; pointer-events: none; }
+.page { min-height: 760px; height: 100svh; isolation: isolate; gap: 10px; }
+.heading { margin-top: 4px; }
+h1 { margin-top: 10px; line-height: 1.45; }
+.brand { color: inherit; text-decoration: none; }
+.monogram { font: 23px/1.3 "Songti SC", "SimSun", serif; white-space: nowrap; letter-spacing: 4px; }
+.brand-star { font-size: 19px; margin-left: 7px; }
+.scene { min-height: 270px; }
+.heart-button { width: min(84%, 530px); }
+.reply { margin-bottom: 10px; }
+.name .person { margin: 0; color: inherit; font: inherit; overflow-wrap: anywhere; }
+.name { max-width: 95%; margin-inline: auto; }
+.florals { position: absolute; inset: 0; overflow: hidden; pointer-events: none; z-index: -1; }
+.lily { position: absolute; width: clamp(190px, 24vw, 320px); bottom: 22px; opacity: .58; z-index: -1; pointer-events: none; }
+.lily-left { left: 1.5%; transform: rotate(-13deg); }
+.lily-right { right: 1.5%; transform: scaleX(-1) rotate(-13deg); }
+.page-actions { display: flex; justify-content: center; flex-wrap: wrap; gap: 12px; margin: 16px 0 0; }
+.soft-button { min-height: 44px; border: 1px solid var(--line); border-radius: 24px; background: #ffffff04; padding: 10px 21px; font-size: 12px; letter-spacing: 1px; transition: background .2s, border-color .2s; }
+.soft-button:hover { background: #f3b3cb12; border-color: #edb2ca80; }
+.soft-button.primary { background: #e6a6bf14; border-color: #edb2ca50; color: #f8cbdb; }
+.local-tag { font-size: 9px; color: var(--muted); padding-left: 6px; }
+.page-actions .soft-button > span:first-child { margin-right: 5px; }
+.panel { width: min(680px, calc(100% - 32px)); max-height: calc(100svh - 48px); margin: auto; padding: 30px; border: 1px solid #c992af45; border-radius: 22px; background: linear-gradient(150deg, #21121f, #110d16 65%); color: var(--ink); overflow: auto; box-shadow: 0 30px 100px #0009; scrollbar-color: #775369 #18101b; }
+.panel::backdrop { background: #05030bc9; backdrop-filter: blur(8px); }
+body:has(dialog[open]) { overflow: hidden; }
+.panel-heading { display: flex; gap: 16px; justify-content: space-between; align-items: flex-start; margin-bottom: 22px; }
+.panel-heading h2 { display: flex; align-items: center; gap: 10px; font: 23px/1.5 "Songti SC", "SimSun", serif; margin-top: 10px; font-weight: normal; }
+.panel-heading h2 img { width: 32px; height: 42px; object-fit: contain; }
+.close-button { flex: 0 0 44px; min-width: 44px; min-height: 44px; font-size: 25px; border: 1px solid var(--line); border-radius: 50%; background: transparent; line-height: 1; }
+.close-button:hover { background: #fff1; }
+.panel-intro, .field-note { font-size: 12px; line-height: 1.9; color: var(--muted); }
+.settings-form { display: grid; gap: 21px; margin-top: 24px; }
+.settings-form label { display: grid; gap: 10px; font-size: 13px; line-height: 1.6; }
+.name-fields { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.name-fields > label { min-width: 0; }
+input, textarea, select { font: inherit; color: var(--ink); max-width: 100%; }
+.settings-form input:not([type=range]) { width: 100%; min-width: 0; min-height: 46px; border: 1px solid var(--line); border-radius: 10px; padding: 10px 12px; background: #ffffff05; font-size: 16px; }
+input:focus-visible, textarea:focus-visible, select:focus-visible { outline: 1px solid #f3b3cb; outline-offset: 3px; }
+.settings-form input[type=range] { accent-color: #e6a6bf; width: 100%; min-height: 44px; }
+.form-status { color: #f3b3cb; font-size: 12px; line-height: 1.8; min-height: 22px; }
+.form-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+.noscript { position: fixed; inset: auto 16px 16px; z-index: 5; padding: 14px; background: #2b1424; color: white; }
+@media (max-width: 600px) {
+  .page { min-height: 760px; padding: max(22px, env(safe-area-inset-top)) 22px max(22px, env(safe-area-inset-bottom)); }
+  .page { gap: 8px; }
+  .heading { margin-top: 7px; }
+  h1 { font-size: 26px; }
+  .scene { min-height: 280px; }
+  .reply { margin-bottom: 8px; }
+  .lily { bottom: auto; top: calc(50% - 35px); width: clamp(110px, 31vw, 130px); opacity: .52; }
+  .lily-left { left: 6px; }
+  .lily-right { right: 6px; }
+  .page-actions { margin-top: 15px; gap: 10px; }
+  .soft-button { padding-inline: 15px; }
+  .panel { padding: 21px 18px; width: calc(100% - 20px); max-height: calc(100svh - 24px); border-radius: 18px; }
+  .panel-heading h2 { font-size: 20px; }
+  .panel-heading .eyebrow { letter-spacing: 2px; font-size: 9px; }
+  .name-fields { gap: 10px; }
+}
+@media (min-width: 601px) and (min-height: 850px) { .scene { max-height: 575px; } .page { justify-content: space-between; } }
+@media (orientation: landscape) and (max-height: 500px) {
+  .page { min-height: 430px; padding: 16px 30px; gap: 6px; }
+  .heading { top: 18%; left: 7%; width: 39%; }
+  h1 { font-size: 22px; }
+  .scene { top: 16%; right: 3%; width: 47%; height: 72%; min-height: 0; }
+  .info { width: 48%; margin-top: auto; }
+  .reply { font-size: 10px; }
+  .page-actions { margin-top: 12px; gap: 8px; }
+  .page-actions .soft-button { font-size: 11px; padding: 8px 10px; }
+  .lily { width: 100px; opacity: .46; top: auto; bottom: 10px; }
+  .lily-left { left: 4px; }
+  .lily-right { right: 4px; }
+  .footer { margin-top: 8px; }
+}
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; transition: none !important; } }
+
+/* 以相伴天数为主，时分秒与纪念日期作为轻量辅助。 */
+.time { display: flex; flex-direction: column; align-items: center; gap: 3px; margin: 7px 0 0; }
+.time-lead { display: flex; justify-content: center; align-items: baseline; flex-wrap: wrap; column-gap: 12px; row-gap: 0; }
+.together-label { font-size: 12px; letter-spacing: 2px; color: #c9a5b8; }
+.day-count { display: inline-flex; align-items: baseline; gap: 7px; }
+.time .day-count strong { font: 400 46px/1.1 var(--number-font); font-variant-numeric: lining-nums tabular-nums; font-synthesis: none; white-space: nowrap; min-width: 0; color: #f7cedf; }
+.time .day-count small { font-size: 12px; color: #dab5c7; }
+.time-clock { display: flex; align-items: center; justify-content: center; gap: 10px; }
+.time .cell { gap: 4px; align-items: center; }
+.time .cell strong, .time .cell:first-child strong { font: 400 17px/1.4 var(--number-font); font-variant-numeric: lining-nums tabular-nums; font-synthesis: none; width: 2ch; min-width: 2ch; text-align: center; color: #b999ad; }
+.time .cell small { font-size: 9px; color: #a48b9d; }
+.time .separator { height: 9px; }
+.since { margin-top: 7px; color: #a88d9e; }
+.since time { font-family: var(--number-font); font-variant-numeric: lining-nums tabular-nums; font-style: normal; }
+@media (max-width: 600px) {
+  .time .day-count strong { font-size: 42px; }
+  .together-label { font-size: 11px; letter-spacing: 1px; }
+  .time-lead { column-gap: 10px; }
+  .time .cell strong, .time .cell:first-child strong { font-size: 16px; }
+}
+@media (orientation: landscape) and (max-height: 500px) {
+  .time { gap: 0; margin-top: 5px; }
+  .time .day-count strong { font-size: 32px; }
+  .together-label { font-size: 10px; letter-spacing: 1px; }
+  .time .cell strong, .time .cell:first-child strong { font-size: 14px; }
+  .time .cell small { font-size: 8px; }
+  .since { margin-top: 4px; }
+  .page-actions { margin-top: 9px; }
+}

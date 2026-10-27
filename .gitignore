@@ -1,0 +1,17 @@
+node_modules/
+dist/
+artifacts/
+coverage/
+.env
+.env.*
+!.env.example
+*.log
+data/
+data-backups/
+backup-*/
+*.sqlite
+*.sqlite-shm
+*.sqlite-wal
+deploy-output/
+tests/artifacts/
+.tmp/

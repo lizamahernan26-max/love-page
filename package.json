@@ -1,0 +1,28 @@
+{
+  "name": "xinwang",
+  "version": "0.5.0",
+  "private": true,
+  "type": "module",
+  "description": "心网：双人同步与账号私密记录",
+  "scripts": {
+    "start": "node --env-file-if-exists=.env server/start.mjs",
+    "preview": "node scripts/serve.mjs",
+    "start:phone": "node --env-file-if-exists=.env scripts/serve-pair-phone.mjs",
+    "test:browser": "node tests/browser-check.mjs",
+    "test:pair-browser": "node tests/pair-browser-check.mjs",
+    "package:server": "node scripts/package-server.mjs",
+    "backup:db": "node --env-file-if-exists=.env scripts/backup-database.mjs",
+    "test": "node --test tests/*.test.mjs",
+    "build": "node scripts/build.mjs",
+    "start:cloud": "node server/start-cloud.mjs",
+    "check:deploy": "node scripts/check-deploy.mjs",
+    "test:postgres": "node --test tests/postgres.test.mjs",
+    "test:device-browser": "node tests/device-browser-check.mjs"
+  },
+  "engines": {
+    "node": ">=24.14.0 <25"
+  },
+  "dependencies": {
+    "pg": "8.23.1"
+  }
+}
