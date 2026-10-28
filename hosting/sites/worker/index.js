@@ -1,11 +1,16 @@
 const frontend = 'https://lizamahernan26-max.github.io/love-page/';
 const frontendRevision = '8bcd26e89c39';
+const embeddedHome = null; // Replaced by the build.
 const publicFiles = new Set(['index.html','pianai.mp3','assets/lily.svg','assets/fonts/OFL.txt','assets/fonts/lxgw-wenkai-mono-tc-numerals.woff2','js/app.js','js/config.js','js/heart.js','js/love-words.js','js/music.js','js/online-api.js','js/online-space.js','js/whisper-backup.js','js/whisper-store.js','js/whispers.js','styles/app.css','styles/online.css','styles/scene.css','styles/whispers.css']);
 
 export default {
   async fetch(request,env) {
     const url = new URL(request.url);
     if (url.protocol !== 'https:') return new Response('HTTPS required',{status:426});
+    if (embeddedHome && ['/', '/index.html'].includes(url.pathname)) {
+      if (!['GET','HEAD'].includes(request.method)) return new Response('Method not allowed',{status:405});
+      return new Response(request.method === 'HEAD' ? null : embeddedHome.html,{headers:{'Content-Type':'text/html; charset=utf-8','Cache-Control':'no-store','Referrer-Policy':'no-referrer','X-Content-Type-Options':'nosniff','X-Xinwang-Build':embeddedHome.revision}});
+    }
     if (url.pathname.startsWith('/api/')) {
       let api;
       try {api = new URL(env.XINWANG_API_ORIGIN);if (api.protocol !== 'https:' || api.origin !== env.XINWANG_API_ORIGIN || api.username || api.password) throw new Error('Invalid backend');}
@@ -38,6 +43,7 @@ export default {
       result.headers.delete('set-cookie');
       result.headers.set('Referrer-Policy','no-referrer');
       result.headers.set('X-Content-Type-Options','nosniff');
+      result.headers.set('Cache-Control','no-cache');
       return result;
     } catch {return new Response('页面暂时无法连接，请稍后重试。',{status:503});}
   }

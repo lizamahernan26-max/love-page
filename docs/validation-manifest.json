@@ -279,7 +279,7 @@
       "notes": 0
     }
   },
-  "checkedAt": "2026-10-28T02:28:04.960Z",
+  "checkedAt": "2026-10-28T05:59:13.830Z",
   "hosting": {
     "siteUrl": "https://xinwang-lhw-wyr-1027.lizamahernan26.chatgpt.site",
     "neonFunctionDeployment": 2,
@@ -457,9 +457,39 @@
       "FirstIdentityNotCreated": true,
       "PhysicalPhoneVerified": false
     },
-    "siteSavedVersion": 3,
+    "siteSavedVersion": 4,
     "githubSourceCommit": "8bcd26e89c39fca4aaad81d56624ad2b46c0a5b3",
     "gatewayTestsPassed": 3,
     "neonAdapterTestsPassed": 2
+  },
+  "wechatCompatibility": {
+    "checkedAt": "2026-10-28T05:59:13.827Z",
+    "userReportedSafariWorks": true,
+    "wechatBeforeFix": "unstyled HTML and inactive script in supplied screenshot",
+    "rootCause": "exact WeChat internal loading failure not reproduced on server; eliminated separate critical asset fetches",
+    "inlineBrowser": {
+      "testedAt": "2026-10-28T05:54:53.970Z",
+      "build": "27526ee1c62a53fd",
+      "checks": [
+        "With external CSS, JS, fonts and images unavailable, the inline homepage still renders stars, heart, lilies, Kai numerals and a live timer.",
+        "Phone, narrow phone, landscape and desktop layouts do not overflow.",
+        "Bundled first setup, girlfriend entry, private isolation and shared message delivery retain the original backend behavior.",
+        "No external frontend subrequests and no page JavaScript errors."
+      ],
+      "errors": [],
+      "blocked": [],
+      "physicalPhone": false
+    },
+    "live": {
+      "CheckedAt": "2026-10-28T05:58:25.5326622Z",
+      "Url": "https://xinwang-lhw-wyr-1027.lizamahernan26.chatgpt.site/?v=mobile-20261028-2",
+      "Status": 200,
+      "Build": "27526ee1c62a53fd",
+      "CacheControl": "no-store",
+      "InlineVerified": true,
+      "Bytes": 132143
+    },
+    "phoneWeChatAfterFixVerified": false,
+    "apiPermissionsUnchanged": true
   }
 }
