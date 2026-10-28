@@ -9,7 +9,8 @@ export function initOnlineSpace({initLocal, onProfile}) {
   const api = new OnlineApi();
   const entry = new URLSearchParams(location.hash.slice(1));
   let deviceCode = entry.get('enter');
-  if (entry.has('enter')) history.replaceState(null, '', location.pathname + location.search);
+  let setupCode = entry.get('setup');
+  if (entry.has('enter') || entry.has('setup')) history.replaceState(null, '', location.pathname + location.search);
   let editing = null, pendingId = null, pendingImport = null, signature = '', profileSignature = '';
   let refreshing = false, busy = false;
   let fileVersion = 0;
@@ -230,6 +231,7 @@ export function initOnlineSpace({initLocal, onProfile}) {
           delete values.passwordAgain;
           if (action === 'register') {if (api.setupRequired) delete values.inviteCode; if (!api.setupKeyRequired) delete values.setupKey;}
           await api.authenticate(action, values);
+          setupCode = null;
           form.querySelectorAll('input[type=password]').forEach(input => {input.value = '';});
           byId('onlineRegisterInvite').value = ''; byId('onlineSetupKey').value = '';
           authChanged(); await refresh(); message('已进入自己的账号。', false, 'onlineAccountStatus');
@@ -344,6 +346,10 @@ export function initOnlineSpace({initLocal, onProfile}) {
     byId('whispersDialog').addEventListener('toggle', () => {if (byId('whispersDialog').open) refresh().catch(() => {});});
     await api.loadSession(); renderAccount(); await refresh();
     if (deviceCode && !byId('accountDialog').open) byId('accountDialog').showModal();
+    if (setupCode && api.setupRequired && !api.user) {
+      byId('onlineSetupKey').value = setupCode; setupCode = null;
+      if (!byId('accountDialog').open) byId('accountDialog').showModal();
+    }
   })().catch(error => {
     if (api.enabled && byId('onlineStatus')) message(error.message, true);
   });

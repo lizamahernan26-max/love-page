@@ -256,8 +256,9 @@
       "scope": "isolated test database and separate browser contexts, no real user accounts"
     },
     "device": {
-      "testedAt": "2026-10-27T12:02:48.165Z",
+      "testedAt": "2026-10-28T02:13:50.377Z",
       "checks": [
+        "首次开通链接自动打开创建面板并移除地址中的初始化钥匙",
         "手机专属入口没有注册密码表单，链接片段及时移除，进入后显示自己的恢复码",
         "同一手机刷新后自动识别，自己的记录持久可见，对方私密内容没有传到页面",
         "手机、窄屏、横屏面板没有横向溢出",
@@ -276,5 +277,13 @@
       "notes": 0
     }
   },
-  "checkedAt": "2026-10-27T12:14:02.322Z"
+  "checkedAt": "2026-10-27T12:14:02.322Z",
+  "hosting": {
+    "siteUrl": "https://xinwang-lhw-wyr-1027.lizamahernan26.chatgpt.site",
+    "neonFunctionDeployment": 2,
+    "initializationByUser": true,
+    "productionTestAccountsCreated": false,
+    "realPhoneVerification": false,
+    "encryptedEndToEnd": false
+  }
 }

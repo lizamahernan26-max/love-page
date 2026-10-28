@@ -7,7 +7,8 @@ import {createAppServer} from '../server/app.mjs';
 
 const root=resolve(dirname(fileURLToPath(import.meta.url)),'..'),artifacts=join(root,'tests/artifacts');await mkdir(artifacts,{recursive:true});
 const require=createRequire(import.meta.url),{chromium}=require(process.env.PLAYWRIGHT_PATH || 'playwright');
-const {server}=createAppServer({root,databasePath:':memory:'});await new Promise(resolve=>server.listen(0,'127.0.0.1',resolve));
+const setupKey='browser-only-initial-setup-key-2026';
+const {server}=createAppServer({root,databasePath:':memory:',setupKey});await new Promise(resolve=>server.listen(0,'127.0.0.1',resolve));
 const origin=`http://127.0.0.1:${server.address().port}`,errors=[],checks=[];
 const browser=await chromium.launch({headless:true,executablePath:process.env.BROWSER_PATH});
 const ownerContext=await browser.newContext({viewport:{width:1440,height:1000}}),guestContext=await browser.newContext({viewport:{width:390,height:844}});
@@ -19,7 +20,9 @@ async function notes(page,text) {
   await page.locator('#onlineText').fill(text);await page.locator('#onlineSubmit').click();await page.waitForFunction(()=>document.getElementById('onlineText').value==='');
 }
 try {
-  await owner.goto(origin);await owner.locator('#onlineEntry').click();
+  await owner.goto(origin+'/#setup='+setupKey);await owner.locator('#onlineRegisterForm').waitFor({state:'visible'});
+  assert.equal(new URL(owner.url()).hash,'');assert.equal(await owner.locator('#onlineSetupKey').inputValue(),setupKey);
+  check('首次开通链接自动打开创建面板并移除地址中的初始化钥匙');
   for(const [name,value] of Object.entries({username:'device_owner',displayName:'演示甲',password:'browser-device-fixture-2026',passwordAgain:'browser-device-fixture-2026'}))await owner.locator(`#onlineRegisterForm [name="${name}"]`).fill(value);
   await owner.locator('#onlineRegisterForm button[type=submit]').click();await owner.locator('#onlineSignedIn').waitFor({state:'visible'});
   await owner.locator('#onlineQuickInvite').click();await owner.waitForFunction(()=>document.getElementById('onlineQuickLink').value.includes('#enter='));
