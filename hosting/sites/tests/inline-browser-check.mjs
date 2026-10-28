@@ -9,7 +9,10 @@ const root=resolve(dirname(fileURLToPath(import.meta.url)),'..');
 const project=resolve(process.env.XINWANG_SOURCE || '../xinwang-hosting');
 const {createAppServer}=await import(pathToFileURL(join(project,'server/app.mjs')));
 const require=createRequire(import.meta.url),{chromium}=require(process.env.PLAYWRIGHT_PATH || 'playwright');
-const response=await gateway.fetch(new Request('https://xinwang.example/'),{}),html=await response.text();
+const response=await gateway.fetch(new Request('https://xinwang.example/'),{});
+const publicRoot=process.env.XINWANG_INLINE_PUBLIC,html=publicRoot?await readFile(join(publicRoot,'index.html'),'utf8'):await response.text();
+const homeHeaders={'Content-Type':'text/html; charset=utf-8','Cache-Control':'no-store'};
+if(publicRoot)for(const line of (await readFile(join(publicRoot,'_headers'),'utf8')).split(/\r?\n/)){const match=line.match(/^  ([\w-]+): (.+)$/);if(match)homeHeaders[match[1]]=match[2];}
 assert.equal(response.headers.get('cache-control'),'no-store');
 assert(!/<link[^>]+rel="stylesheet"/.test(html));assert(!/<script[^>]+src=/.test(html));
 assert(html.includes('data:image/svg+xml;base64,'));assert(html.includes('data:font/woff2;base64,'));
@@ -17,12 +20,12 @@ const app=createAppServer({root:project,databasePath:':memory:',setupKey:'inline
 const handler=app.server.listeners('request')[0],blocked=[];
 app.server.removeAllListeners('request');app.server.on('request',(req,res)=>{
   const path=req.url.split('?')[0];
-  if(path==='/'||path==='/index.html'){res.writeHead(200,{'Content-Type':'text/html; charset=utf-8','Cache-Control':'no-store'});res.end(html);}
+  if(path==='/'||path==='/index.html'){res.writeHead(200,homeHeaders);res.end(html);}
   else if(path.startsWith('/api/')||path==='/pianai.mp3')handler(req,res);
   else{blocked.push(path);res.writeHead(503);res.end('External frontend files deliberately unavailable.');}
 });
 await new Promise(resolve=>app.server.listen(0,'127.0.0.1',resolve));
-const origin=`http://127.0.0.1:${app.server.address().port}`,errors=[],checks=[],artifacts=join(root,'tests/artifacts');await mkdir(artifacts,{recursive:true});
+const origin=`http://127.0.0.1:${app.server.address().port}`,errors=[],checks=[],artifacts=process.env.XINWANG_ARTIFACTS||join(root,'tests/artifacts');await mkdir(artifacts,{recursive:true});
 const browser=await chromium.launch({headless:true,executablePath:process.env.BROWSER_PATH});
 const check=message=>{checks.push(message);console.log('PASS '+message);};
 const context=await browser.newContext({viewport:{width:390,height:844},userAgent:'Mozilla/5.0 (iPhone; CPU iPhone OS 18_6 like Mac OS X) AppleWebKit/605.1.15 Mobile/15E148 MicroMessenger/8.0.65',isMobile:true,hasTouch:true,deviceScaleFactor:1});
@@ -62,6 +65,6 @@ try{
   assert.deepEqual(blocked,[]);assert.deepEqual(errors,[]);
   check('No external frontend subrequests and no page JavaScript errors.');
 }finally{
-  await writeFile(join(artifacts,'inline-results.json'),JSON.stringify({testedAt:new Date().toISOString(),build:response.headers.get('x-xinwang-build'),checks,errors,blocked,physicalPhone:false},null,2));
+  await writeFile(join(artifacts,'inline-results.json'),JSON.stringify({testedAt:new Date().toISOString(),build:homeHeaders['X-Xinwang-Build']||response.headers.get('x-xinwang-build'),checks,errors,blocked,physicalPhone:false,headerPolicyApplied:Boolean(publicRoot)},null,2));
   await browser.close();await new Promise(resolve=>app.server.close(resolve));
 }

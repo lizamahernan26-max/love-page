@@ -17,7 +17,8 @@
     "start:cloud": "node server/start-cloud.mjs",
     "check:deploy": "node scripts/check-deploy.mjs",
     "test:postgres": "node --test tests/postgres.test.mjs",
-    "test:device-browser": "node tests/device-browser-check.mjs"
+    "test:device-browser": "node tests/device-browser-check.mjs",
+    "package:netlify": "node scripts/package-netlify.mjs"
   },
   "engines": {
     "node": ">=24.14.0 <25"

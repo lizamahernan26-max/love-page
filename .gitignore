@@ -15,3 +15,4 @@ backup-*/
 deploy-output/
 tests/artifacts/
 .tmp/
+netlify-output/

@@ -77,8 +77,9 @@
     "backendPublished": true,
     "platforms": "Render Free + Neon Free",
     "blockingCondition": "browser URL safety verification stopped control; accounts logged in but resources not created by agent",
-    "publicUrl": "https://xinwang-lhw-wyr-1027.lizamahernan26.chatgpt.site/",
-    "physicalPhoneVerified": false
+    "publicUrl": "https://quiet-queijadas-c2b739.netlify.app/",
+    "physicalPhoneVerified": false,
+    "phoneNoProxyConfirmedByUser": true
   },
   "homepagePolish": {
     "date": "2026-10-27",
@@ -279,188 +280,90 @@
       "notes": 0
     }
   },
-  "checkedAt": "2026-10-28T05:59:13.830Z",
+  "checkedAt": "2026-10-28T08:01:04.756Z",
   "hosting": {
-    "siteUrl": "https://xinwang-lhw-wyr-1027.lizamahernan26.chatgpt.site",
-    "neonFunctionDeployment": 2,
+    "siteUrl": "https://quiet-queijadas-c2b739.netlify.app/",
+    "neonFunctionDeployment": 3,
     "initializationByUser": true,
     "productionTestAccountsCreated": false,
     "realPhoneVerification": false,
     "encryptedEndToEnd": false,
     "verifiedAt": "2026-10-28T02:27:02.6721544Z",
     "liveChecks": {
-      "CheckedAt": "2026-10-28T02:27:02.6721544Z",
-      "Site": "https://xinwang-lhw-wyr-1027.lizamahernan26.chatgpt.site/",
-      "PublicFiles": [
+      "checkedAt": "2026-10-28T07:59:29.8203053Z",
+      "url": "https://quiet-queijadas-c2b739.netlify.app/",
+      "homepageStatus": 200,
+      "build": "b8610c7c5c0d9448",
+      "noHostingLogin": true,
+      "inlineFrontend": true,
+      "scriptPolicyMatches": true,
+      "frontendNoStore": true,
+      "phoneNoProxyConfirmedByUser": true,
+      "freeClaimConfirmedByUser": true,
+      "publicAccessConfirmedByUser": true,
+      "api": [
         {
-          "Path": "assets/fonts/lxgw-wenkai-mono-tc-numerals.woff2",
-          "Status": 200,
-          "Matches": true,
-          "Sha256": "9248597fa85ea0dcfb008820a4f129806f0ffa48f98bd95cc228ac5e1210c026",
-          "Method": "SHA256"
+          "path": "/api/status",
+          "status": 200,
+          "body": {
+            "online": true,
+            "transport": "https",
+            "version": "0.5.0"
+          }
         },
         {
-          "Path": "assets/fonts/OFL.txt",
-          "Status": 200,
-          "Matches": true,
-          "Sha256": "4fff27d35db0e22cd81d58da6f20e09f415cf354a3338e3cf1fc0eb9222c7174",
-          "Method": "SHA256"
+          "path": "/api/session",
+          "status": 200,
+          "body": {
+            "authenticated": false,
+            "setupRequired": true,
+            "setupKeyRequired": true,
+            "slotsAvailable": true
+          }
         },
         {
-          "Path": "assets/lily.svg",
-          "Status": 200,
-          "Matches": true,
-          "Sha256": "d519df34dbc9570ab1ef99eb46a1dc8b4b40c1488406b5217d945886bc0bc209",
-          "Method": "SHA256"
+          "path": "/api/notes",
+          "status": 401,
+          "body": {
+            "error": {
+              "code": "login",
+              "message": "请先登录自己的账号。"
+            }
+          }
         },
         {
-          "Path": "index.html",
-          "Status": 200,
-          "Matches": true,
-          "Sha256": "a2699f1c733d97d47f274b8a99e1ac250b171fbf58cc77b2fa9a67ac3228af3d",
-          "Method": "title, viewport and app module; hosting injects its loader"
+          "path": "/.env",
+          "status": 404,
+          "body": null
         },
         {
-          "Path": "js/app.js",
-          "Status": 200,
-          "Matches": true,
-          "Sha256": "b69da1d9faf7317c4b082789521a0d429a47309fe0092368c5464d4f0b6e46b3",
-          "Method": "SHA256"
-        },
-        {
-          "Path": "js/config.js",
-          "Status": 200,
-          "Matches": true,
-          "Sha256": "3c8c653f18acb7fbf1007473d98fc14dd885cb9fbce114f0142e8a03d33fbdf6",
-          "Method": "SHA256"
-        },
-        {
-          "Path": "js/heart.js",
-          "Status": 200,
-          "Matches": true,
-          "Sha256": "1726e6ab4da03d818f1f035aad6c627aeced8eea880a9ab30ecf2021e6cec164",
-          "Method": "SHA256"
-        },
-        {
-          "Path": "js/love-words.js",
-          "Status": 200,
-          "Matches": true,
-          "Sha256": "dbba719900980d9bb8ce78c4f26c0bc441081c9d473e589eef4064ad2cd739db",
-          "Method": "SHA256"
-        },
-        {
-          "Path": "js/music.js",
-          "Status": 200,
-          "Matches": true,
-          "Sha256": "b9972e41d92c42f8baefcc1a709fa0591316d1d335d44bb60952056751024b8c",
-          "Method": "SHA256"
-        },
-        {
-          "Path": "pianai.mp3",
-          "Status": 200,
-          "Matches": true,
-          "Sha256": "ac5df61db6e80d3673099a7175e5c6ea7e582a82bce27bdda55e4ec9bbf4c464",
-          "Method": "SHA256"
-        },
-        {
-          "Path": "js/online-api.js",
-          "Status": 200,
-          "Matches": true,
-          "Sha256": "5f06c3de47eadd783befb889e8444eb7b48eeb4a7ae5930fb9e60bb1b8923d2e",
-          "Method": "SHA256"
-        },
-        {
-          "Path": "js/whisper-store.js",
-          "Status": 200,
-          "Matches": true,
-          "Sha256": "787fd9470a7fabf17e5540ddbd7152d33c3408e9a82465853698a2c3c92f8293",
-          "Method": "SHA256"
-        },
-        {
-          "Path": "js/whisper-backup.js",
-          "Status": 200,
-          "Matches": true,
-          "Sha256": "a91ab659a64159239b49326cff2ba2bcd943310f270d2ee259140232c723aa6b",
-          "Method": "SHA256"
-        },
-        {
-          "Path": "js/whispers.js",
-          "Status": 200,
-          "Matches": true,
-          "Sha256": "969e745c3d09f0285e8deb1c4614c4047b4e60f49378a0aee954d63c597bfb72",
-          "Method": "SHA256"
-        },
-        {
-          "Path": "js/online-space.js",
-          "Status": 200,
-          "Matches": true,
-          "Sha256": "3c81b9d3cf8fa4ba1847fb13ecfcc58fe62c03de8738b36c0b9d98ee1e09bc83",
-          "Method": "SHA256"
-        },
-        {
-          "Path": "styles/app.css",
-          "Status": 200,
-          "Matches": true,
-          "Sha256": "c3a8bd52c15c0b45c871196e1818bc130b3661e3c15e5a3eb787309066c9223a",
-          "Method": "SHA256"
-        },
-        {
-          "Path": "styles/online.css",
-          "Status": 200,
-          "Matches": true,
-          "Sha256": "7c207f95d6d29e28f4d234fe6d8eeddaa80bb6947fcba3894d63c9c7c392002b",
-          "Method": "SHA256"
-        },
-        {
-          "Path": "styles/whispers.css",
-          "Status": 200,
-          "Matches": true,
-          "Sha256": "7bbd1ffa1580adb774cf0da4ac017767e3fe0e604dfa3fa6a359143b97e2e195",
-          "Method": "SHA256"
-        },
-        {
-          "Path": "styles/scene.css",
-          "Status": 200,
-          "Matches": true,
-          "Sha256": "6ba702fb7cd055c46b99805a0f63ccffcfe8f0b5c475995d47b2ac5fe1b5a48a",
-          "Method": "SHA256"
+          "path": "/data/xinwang.sqlite",
+          "status": 404,
+          "body": null
         }
       ],
-      "Api": [
-        {
-          "Path": "api/status",
-          "Status": 200,
-          "Body": "{\"online\":true,\"transport\":\"https\",\"version\":\"0.5.0\"}"
-        },
-        {
-          "Path": "api/session",
-          "Status": 200,
-          "Body": "{\"authenticated\":false,\"setupRequired\":true,\"setupKeyRequired\":true,\"slotsAvailable\":true}"
-        },
-        {
-          "Path": "api/notes",
-          "Status": 401,
-          "Body": "{\"error\":{\"code\":\"login\",\"message\":\"请先登录自己的账号。\"}}"
-        },
-        {
-          "Path": ".env",
-          "Status": 404,
-          "Body": null
-        },
-        {
-          "Path": "data/xinwang.sqlite",
-          "Status": 404,
-          "Body": null
-        }
-      ],
-      "MusicRangeStatus": 206,
-      "FirstIdentityNotCreated": true,
-      "PhysicalPhoneVerified": false
+      "musicRangeStatus": 206,
+      "musicRangeBytes": 100,
+      "sameOriginInvalidCredentials": 401,
+      "crossOriginRejected": 403,
+      "passed": true
     },
     "siteSavedVersion": 4,
     "githubSourceCommit": "8bcd26e89c39fca4aaad81d56624ad2b46c0a5b3",
     "gatewayTestsPassed": 3,
-    "neonAdapterTestsPassed": 2
+    "neonAdapterTestsPassed": 2,
+    "previousSite": {
+      "siteUrl": "https://xinwang-lhw-wyr-1027.lizamahernan26.chatgpt.site",
+      "siteSavedVersion": 4
+    },
+    "provider": "Netlify Free + Neon Free",
+    "netlifySiteId": "68517a2b-3591-48fe-8c92-44bc6e348ff6",
+    "netlifyDeployId": "6ae1a75919585d6662bf8433",
+    "userClaimedFree": true,
+    "publicVerified": true,
+    "publicOriginChanged": true,
+    "physicalPhoneNoProxyConfirmedByUser": true,
+    "databaseReset": false
   },
   "wechatCompatibility": {
     "checkedAt": "2026-10-28T05:59:13.827Z",
@@ -491,5 +394,81 @@
     },
     "phoneWeChatAfterFixVerified": false,
     "apiPermissionsUnchanged": true
+  },
+  "netlify": {
+    "browser": {
+      "testedAt": "2026-10-28T07:46:19.041Z",
+      "build": "b8610c7c5c0d9448",
+      "checks": [
+        "With external CSS, JS, fonts and images unavailable, the inline homepage still renders stars, heart, lilies, Kai numerals and a live timer.",
+        "Phone, narrow phone, landscape and desktop layouts do not overflow.",
+        "Bundled first setup, girlfriend entry, private isolation and shared message delivery retain the original backend behavior.",
+        "No external frontend subrequests and no page JavaScript errors."
+      ],
+      "errors": [],
+      "blocked": [],
+      "physicalPhone": false,
+      "headerPolicyApplied": true
+    },
+    "packagingTestsPassed": 2,
+    "live": {
+      "checkedAt": "2026-10-28T07:59:29.8203053Z",
+      "url": "https://quiet-queijadas-c2b739.netlify.app/",
+      "homepageStatus": 200,
+      "build": "b8610c7c5c0d9448",
+      "noHostingLogin": true,
+      "inlineFrontend": true,
+      "scriptPolicyMatches": true,
+      "frontendNoStore": true,
+      "phoneNoProxyConfirmedByUser": true,
+      "freeClaimConfirmedByUser": true,
+      "publicAccessConfirmedByUser": true,
+      "api": [
+        {
+          "path": "/api/status",
+          "status": 200,
+          "body": {
+            "online": true,
+            "transport": "https",
+            "version": "0.5.0"
+          }
+        },
+        {
+          "path": "/api/session",
+          "status": 200,
+          "body": {
+            "authenticated": false,
+            "setupRequired": true,
+            "setupKeyRequired": true,
+            "slotsAvailable": true
+          }
+        },
+        {
+          "path": "/api/notes",
+          "status": 401,
+          "body": {
+            "error": {
+              "code": "login",
+              "message": "请先登录自己的账号。"
+            }
+          }
+        },
+        {
+          "path": "/.env",
+          "status": 404,
+          "body": null
+        },
+        {
+          "path": "/data/xinwang.sqlite",
+          "status": 404,
+          "body": null
+        }
+      ],
+      "musicRangeStatus": 206,
+      "musicRangeBytes": 100,
+      "sameOriginInvalidCredentials": 401,
+      "crossOriginRejected": 403,
+      "passed": true
+    }
   }
 }

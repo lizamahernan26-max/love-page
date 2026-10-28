@@ -2,7 +2,7 @@
 
 当前版本 **0.5.0**，正式开发目录 `C:\Users\24583\Desktop\hajiru`。保留暗色星空、粉色粒子爱心、百合、楷体计时与《偏爱》，支持两人共享、各自私密记录，以及女朋友无需账号密码的专属邀请入口。
 
-**免费方案：GitHub 保存代码，Sites 提供统一网页入口，Neon Free 的 Functions 与 PostgreSQL 提供双人服务和保存记录。** 不再使用要求绑卡的 Render。正式网址为 <https://xinwang-lhw-wyr-1027.lizamahernan26.chatgpt.site>；GitHub Pages 单独只能展示页面。部署与首次开通见 [免费上线](docs/免费上线.md)。
+**免费方案：GitHub 保存代码，Netlify Free 提供独立网页与同源 API 入口，Neon Free 保存记录并运行现有双人后端。** 正式网址为 <https://quiet-queijadas-c2b739.netlify.app/>。用户已用手机关闭代理验证可访问，并完成免费认领及 Public 设置。使用与维护见 [国内手机部署](docs/国内手机部署.md)。旧 chatgpt.site 地址停止作为正式双人入口。
 
 首次由你在电脑双击 `data/心网首次开通.url`，自行设置账号和密码，再生成她的专属邀请链接。首次开通文件包含私人初始化钥匙，只保留本机；不要发给她或上传。手机之后使用正式网址，你登录自己的账号，她使用一次邀请进入。已有本机账号和记录不自动上传。
 
