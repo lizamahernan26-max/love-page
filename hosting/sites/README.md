@@ -26,4 +26,4 @@ dist/
     └── index.js
 ```
 
-源代码在 `worker/index.js`；构建不删除原有文件。发布前运行上面的测试和构建，并通过 Sites 官方 helper 同步精确源码与制品。静态源码仍以桌面 `hajiru` 项目为准。
+源代码在 `worker/index.js`；构建不删除原有文件。发布前运行上面的测试和构建，并通过 Sites 官方 helper 同步精确源码与制品。静态源码仍以桌面 `hajiru` 项目为准。更新 GitHub 前端后，将 `frontendRevision` 改为已发布提交的短 SHA 并发布入口，避免缓存继续使用旧版首次开通脚本。

@@ -1,4 +1,5 @@
 const frontend = 'https://lizamahernan26-max.github.io/love-page/';
+const frontendRevision = '8bcd26e89c39';
 const publicFiles = new Set(['index.html','pianai.mp3','assets/lily.svg','assets/fonts/OFL.txt','assets/fonts/lxgw-wenkai-mono-tc-numerals.woff2','js/app.js','js/config.js','js/heart.js','js/love-words.js','js/music.js','js/online-api.js','js/online-space.js','js/whisper-backup.js','js/whisper-store.js','js/whispers.js','styles/app.css','styles/online.css','styles/scene.css','styles/whispers.css']);
 
 export default {
@@ -29,7 +30,9 @@ export default {
     const headers = new Headers();
     for (const name of ['range','if-none-match','if-modified-since']) {const value = request.headers.get(name);if (value !== null) headers.set(name,value);}
     try {
-      const upstream = await fetch(new URL(file === 'index.html' ? '' : file,frontend),{method:request.method,headers,redirect:'manual'});
+      const resource = new URL(file === 'index.html' ? '' : file,frontend);
+      resource.searchParams.set('v',frontendRevision);
+      const upstream = await fetch(resource,{method:request.method,headers,redirect:'manual'});
       if (upstream.status >= 300 && upstream.status < 400 && upstream.status !== 304) return new Response('页面资源地址暂时不可用。',{status:503});
       const result = new Response(upstream.body,upstream);
       result.headers.delete('set-cookie');

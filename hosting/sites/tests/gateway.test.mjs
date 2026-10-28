@@ -12,11 +12,11 @@ test('gateway forwards only app authentication, preserves secure cookies and nev
 test('static gateway serves only reviewed public files and never forwards cookies to GitHub',async t=>{
   let captured,calls=0;t.mock.method(globalThis,'fetch',async(url,options)=>{calls++;captured={url:String(url),...options};return new Response('asset',{headers:{'Set-Cookie':'untrusted=1'}});});
   const response=await gateway.fetch(new Request(origin+'/pianai.mp3',{headers:{Cookie:'private=hidden',Range:'bytes=0-99'}}),env);
-  assert.equal(captured.url,'https://lizamahernan26-max.github.io/love-page/pianai.mp3');assert.equal(captured.headers.get('range'),'bytes=0-99');assert.equal(captured.headers.get('cookie'),null);assert.equal(response.headers.get('set-cookie'),null);
+  assert.equal(new URL(captured.url).pathname,'/love-page/pianai.mp3');assert.equal(new URL(captured.url).searchParams.get('v'),'8bcd26e89c39');assert.equal(captured.headers.get('range'),'bytes=0-99');assert.equal(captured.headers.get('cookie'),null);assert.equal(response.headers.get('set-cookie'),null);
   for(const path of ['/.env','/server/app.mjs','/data/xinwang.sqlite','/unknown'])assert.equal((await gateway.fetch(new Request(origin+path),env)).status,404);
   assert.equal(calls,1);
   assert.equal((await gateway.fetch(new Request(origin+'/'),env)).status,200);
-  assert.equal(captured.url,'https://lizamahernan26-max.github.io/love-page/');
+  assert.equal(new URL(captured.url).pathname,'/love-page/');
   assert.equal(captured.redirect,'manual');
 });
 test('missing backend and network failures remain unavailable rather than simulating successful saves',async t=>{
